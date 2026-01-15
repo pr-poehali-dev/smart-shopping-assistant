@@ -20,11 +20,11 @@ const Index = () => {
   ];
 
   const categoryData = [
-    { name: "Продукты", value: 15800, color: "#171717" },
-    { name: "Транспорт", value: 4200, color: "#404040" },
-    { name: "Развлечения", value: 3600, color: "#737373" },
-    { name: "Здоровье", value: 2800, color: "#22C55E" },
-    { name: "Другое", value: 1900, color: "#A3A3A3" },
+    { name: "Продукты", value: 15800, color: "#8B5CF6" },
+    { name: "Транспорт", value: 4200, color: "#3B82F6" },
+    { name: "Развлечения", value: 3600, color: "#EC4899" },
+    { name: "Здоровье", value: 2800, color: "#10B981" },
+    { name: "Другое", value: 1900, color: "#F59E0B" },
   ];
 
   const storeComparison = [
@@ -57,7 +57,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-sm">
                 <Icon name="ShoppingBag" className="text-primary-foreground" size={24} />
               </div>
               <div>
@@ -75,13 +75,13 @@ const Index = () => {
       <main className="container mx-auto px-4 py-6 space-y-6">
         <section className="animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="border-2 border-border hover:border-foreground transition-all">
+            <Card className="border border-border hover:shadow-md transition-all duration-200">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Потрачено за месяц</CardTitle>
                 <Icon name="TrendingDown" className="text-primary" size={20} />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">28 300 ₽</div>
+                <div className="text-3xl font-bold numeric">28 300 ₽</div>
                 <p className="text-xs text-success mt-1 flex items-center gap-1">
                   <Icon name="ArrowDown" size={12} />
                   8.2% меньше прошлого месяца
@@ -89,24 +89,24 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-border hover:border-foreground transition-all">
+            <Card className="border border-border hover:shadow-md transition-all duration-200">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Экономия</CardTitle>
                 <Icon name="PiggyBank" className="text-success" size={20} />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">2 450 ₽</div>
+                <div className="text-3xl font-bold numeric">2 450 ₽</div>
                 <p className="text-xs text-muted-foreground mt-1">За счет умных покупок</p>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-border hover:border-foreground transition-all">
+            <Card className="border border-border hover:shadow-md transition-all duration-200">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Средний чек</CardTitle>
                 <Icon name="Receipt" className="text-secondary" size={20} />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">847 ₽</div>
+                <div className="text-3xl font-bold numeric">847 ₽</div>
                 <p className="text-xs text-muted-foreground mt-1">24 покупки в этом месяце</p>
               </CardContent>
             </Card>
@@ -172,7 +172,7 @@ const Index = () => {
                       contentStyle={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
                       formatter={(value: number) => [`${value} ₽`, 'Сумма']}
                     />
-                    <Line type="monotone" dataKey="amount" stroke="#171717" strokeWidth={2} dot={{ fill: '#171717', r: 4 }} />
+                    <Line type="monotone" dataKey="amount" stroke="#8B5CF6" strokeWidth={3} dot={{ fill: '#8B5CF6', r: 5 }} activeDot={{ r: 7 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -227,14 +227,14 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-4">
                   {storeComparison.map((store, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border-2 border-border rounded-sm hover:border-foreground transition-all">
+                    <div key={index} className="flex items-center justify-between p-4 border border-border rounded-xl hover:shadow-md transition-all duration-200">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-accent border-2 border-border rounded-sm flex items-center justify-center">
+                        <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
                           <Icon name="Store" className="text-primary" size={20} />
                         </div>
                         <div>
                           <div className="font-semibold">{store.store}</div>
-                          <div className="text-2xl font-bold mt-1">{store.price} ₽</div>
+                          <div className="text-2xl font-bold numeric mt-1">{store.price} ₽</div>
                         </div>
                       </div>
                       {store.savings !== 0 && (
@@ -245,7 +245,7 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 p-4 bg-success/5 border-2 border-success rounded-sm">
+                <div className="mt-6 p-4 bg-success/10 border border-success/30 rounded-xl">
                   <div className="flex items-center gap-2">
                     <Icon name="Lightbulb" className="text-success" size={20} />
                     <span className="font-semibold text-success">Рекомендация:</span>
@@ -264,9 +264,9 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-3">
                   {recentReceipts.map((receipt) => (
-                    <div key={receipt.id} className="flex items-center justify-between p-4 border-2 border-border rounded-sm hover:border-foreground transition-all cursor-pointer">
+                    <div key={receipt.id} className="flex items-center justify-between p-4 border border-border rounded-xl hover:shadow-md transition-all duration-200 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-accent border-2 border-border rounded-sm flex items-center justify-center">
+                        <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
                           <Icon name="Receipt" className="text-primary" size={20} />
                         </div>
                         <div>
@@ -275,7 +275,7 @@ const Index = () => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="font-bold">{receipt.amount} ₽</div>
+                        <div className="font-bold numeric">{receipt.amount} ₽</div>
                         <Badge variant="outline" className="mt-1">{receipt.category}</Badge>
                       </div>
                     </div>
@@ -293,8 +293,8 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-3">
                   {notifications.map((notification) => (
-                    <div key={notification.id} className="flex gap-3 p-4 border-2 border-border rounded-sm hover:border-foreground transition-all">
-                      <div className={`w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 border-2 border-border ${
+                    <div key={notification.id} className="flex gap-3 p-4 border border-border rounded-xl hover:shadow-md transition-all duration-200">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                         notification.type === 'discount' ? 'bg-success/10' :
                         notification.type === 'budget' ? 'bg-warning/10' : 'bg-primary/10'
                       }`}>
