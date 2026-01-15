@@ -20,11 +20,11 @@ const Index = () => {
   ];
 
   const categoryData = [
-    { name: "Продукты", value: 15800, color: "#0EA5E9" },
-    { name: "Транспорт", value: 4200, color: "#8B5CF6" },
-    { name: "Развлечения", value: 3600, color: "#F97316" },
+    { name: "Продукты", value: 15800, color: "#171717" },
+    { name: "Транспорт", value: 4200, color: "#404040" },
+    { name: "Развлечения", value: 3600, color: "#737373" },
     { name: "Здоровье", value: 2800, color: "#22C55E" },
-    { name: "Другое", value: 1900, color: "#94A3B8" },
+    { name: "Другое", value: 1900, color: "#A3A3A3" },
   ];
 
   const storeComparison = [
@@ -53,11 +53,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-card sticky top-0 z-10 backdrop-blur-sm bg-card/80">
+      <header className="border-b border-border bg-card sticky top-0 z-10 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center">
                 <Icon name="ShoppingBag" className="text-primary-foreground" size={24} />
               </div>
               <div>
@@ -75,7 +75,7 @@ const Index = () => {
       <main className="container mx-auto px-4 py-6 space-y-6">
         <section className="animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-2 border-border hover:border-foreground transition-all">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Потрачено за месяц</CardTitle>
                 <Icon name="TrendingDown" className="text-primary" size={20} />
@@ -89,7 +89,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-2 border-border hover:border-foreground transition-all">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Экономия</CardTitle>
                 <Icon name="PiggyBank" className="text-success" size={20} />
@@ -100,7 +100,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-2 border-border hover:border-foreground transition-all">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Средний чек</CardTitle>
                 <Icon name="Receipt" className="text-secondary" size={20} />
@@ -165,14 +165,14 @@ const Index = () => {
               <CardContent>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={spendingData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
                     <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
                     <YAxis stroke="#6b7280" fontSize={12} />
                     <Tooltip 
                       contentStyle={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
                       formatter={(value: number) => [`${value} ₽`, 'Сумма']}
                     />
-                    <Line type="monotone" dataKey="amount" stroke="#0EA5E9" strokeWidth={3} dot={{ fill: '#0EA5E9', r: 5 }} />
+                    <Line type="monotone" dataKey="amount" stroke="#171717" strokeWidth={2} dot={{ fill: '#171717', r: 4 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -227,9 +227,9 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-4">
                   {storeComparison.map((store, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent transition-colors">
+                    <div key={index} className="flex items-center justify-between p-4 border-2 border-border rounded-sm hover:border-foreground transition-all">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <div className="w-10 h-10 bg-accent border-2 border-border rounded-sm flex items-center justify-center">
                           <Icon name="Store" className="text-primary" size={20} />
                         </div>
                         <div>
@@ -245,7 +245,7 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 p-4 bg-success/10 border border-success/20 rounded-lg">
+                <div className="mt-6 p-4 bg-success/5 border-2 border-success rounded-sm">
                   <div className="flex items-center gap-2">
                     <Icon name="Lightbulb" className="text-success" size={20} />
                     <span className="font-semibold text-success">Рекомендация:</span>
@@ -264,9 +264,9 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-3">
                   {recentReceipts.map((receipt) => (
-                    <div key={receipt.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent transition-colors cursor-pointer">
+                    <div key={receipt.id} className="flex items-center justify-between p-4 border-2 border-border rounded-sm hover:border-foreground transition-all cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <div className="w-10 h-10 bg-accent border-2 border-border rounded-sm flex items-center justify-center">
                           <Icon name="Receipt" className="text-primary" size={20} />
                         </div>
                         <div>
@@ -293,8 +293,8 @@ const Index = () => {
               <CardContent>
                 <div className="space-y-3">
                   {notifications.map((notification) => (
-                    <div key={notification.id} className="flex gap-3 p-4 border rounded-lg hover:bg-accent transition-colors">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                    <div key={notification.id} className="flex gap-3 p-4 border-2 border-border rounded-sm hover:border-foreground transition-all">
+                      <div className={`w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 border-2 border-border ${
                         notification.type === 'discount' ? 'bg-success/10' :
                         notification.type === 'budget' ? 'bg-warning/10' : 'bg-primary/10'
                       }`}>
